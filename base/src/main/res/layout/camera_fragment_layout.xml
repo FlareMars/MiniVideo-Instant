@@ -1,0 +1,225 @@
+<com.jb.zcamera.ui.MainRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    >
+
+    <RelativeLayout
+        android:id="@+id/preview_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" >
+
+        <FrameLayout
+            android:id="@+id/preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <com.jb.zcamera.ui.DrawableOverlayImageView
+        android:id="@+id/drawable_overlay_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="matrix" />
+
+    <View
+        android:id="@+id/touch_event_interceptor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+
+    <View
+        android:id="@+id/preview_overlay"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="#0d0d0d"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/panel_main_bottom_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+            <ImageView
+                android:id="@+id/background_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/gallery_icon"
+                />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/take_video"
+            android:layout_width="@dimen/main_bottom_capture_button_size"
+            android:layout_height="@dimen/main_bottom_capture_button_size"
+            android:scaleType="centerInside"
+            android:src="@drawable/main_take_video_selector"
+            />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/sticker_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:src="@drawable/emoji_icon"
+                />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/filter_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/main_filter_off_normal"
+                />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/download_button_rlyt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="27dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="15dp">
+        <ImageView
+            android:id="@+id/download_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/main_icon_bg_selector"
+            android:scaleType="centerInside"
+            android:src="@drawable/download"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/dot"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/camera_change_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/download_button_rlyt"
+        android:layout_marginEnd="15dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/main_icon_bg_selector"
+        android:scaleType="centerInside"
+        android:src="@drawable/camera_swtich_camera"
+        />
+
+    <LinearLayout
+        android:id="@+id/panel_filters"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/panel_filters_height"
+        android:layout_alignParentBottom="true"
+        android:translationY="@dimen/panel_filters_height"
+        android:orientation="vertical"
+        android:background="#aaffffff"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/filter_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp" />
+
+        <ImageView
+            android:id="@+id/filters_close_btn"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:src="@drawable/chevron_arrow_down"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/panel_sticker"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/panel_filters_height"
+        android:layout_alignParentBottom="true"
+        android:translationY="@dimen/panel_filters_height"
+        android:orientation="vertical"
+        android:background="#aaffffff"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/sticker_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp" />
+
+        <ImageView
+            android:id="@+id/stickers_close_btn"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:src="@drawable/chevron_arrow_down"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/panel_backgrounds"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/panel_filters_height"
+        android:layout_alignParentBottom="true"
+        android:translationY="@dimen/panel_filters_height"
+        android:orientation="vertical"
+        android:background="#aaffffff"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/background_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp" />
+
+        <ImageView
+            android:id="@+id/backgrounds_close_btn"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:src="@drawable/chevron_arrow_down"
+            />
+
+    </LinearLayout>
+
+</com.jb.zcamera.ui.MainRelativeLayout>

@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">MiniVideo</string>
+
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="request_ext_sdcard_permission_tip">SD Write Permission</string>
+    <string name="request_ext_sdcard_permission_msg1">In order to write to the SD card, S Photo Editor needs you to explicitly grant permission through Android. After you press CONFIRM, the Android document selection dialog will be displayed.</string>
+    <string name="request_ext_sdcard_permission_msg2">Please navigate to your external SD card and select the top level folder.</string>
+    <string name="request_ext_sdcard_permission_msg3">You may need to use a menu option to show the SD card.</string>
+    <string name="request_ext_sdcard_permission_success">Authorization success!</string>
+    <string name="request_ext_sdcard_permission_fail">Authorization failed!</string>
+
+
+    <string name="motion_duration_tips">Please keep the press at least 1s</string>
+
+    <string name="storage_not_ready">Cannot take photo. Please insert a storage card or change the storage path of photos.</string>
+    <string name="little_sdcard_tips">Not Enough Storage. Photo/video may not be saved.</string>
+
+    <string name="permission_camera_rationale">The Camera Permissions Are Requested!</string>
+
+    <string name="ok">OK</string>
+
+    <string name="record">Record</string>
+    <string name="stop">Stop</string>
+    <string name="description_info">Info</string>
+    <string name="permission_request">This sample needs permission for camera and audio recording.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="intro_message">
+        <![CDATA[
+
+
+            This sample demonstrates how to record video using Camera2 API.
+
+
+        ]]>
+    </string>
+</resources>
