@@ -6,14 +6,23 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.media.ThumbnailUtils;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 import com.google.android.instantapps.InstantApps;
 import com.pixelslab.stickerpe.R;
 
@@ -36,6 +45,9 @@ public class ShareActivity extends AppCompatActivity {
     private Button shareBtn;
     private Button installBtn;
 
+    ShareDialog shareDialog;
+    CallbackManager callbackManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,11 +68,42 @@ public class ShareActivity extends AppCompatActivity {
         AssetManager mgr=getAssets();
         Typeface tf= Typeface.createFromAsset(mgr, "Sansation_Regular.ttf");
         mTitleTv.setTypeface(tf);
+        shareDialog = new ShareDialog(this);
 
         shareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                callbackManager = CallbackManager.Factory.create();
+                shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+                    @Override
+                    public void onSuccess(Sharer.Result result) {
+                        Log.e("Facebook", "onSuccess: " + result.toString());
+                        if (InstantApps.isInstantApp(ShareActivity.this)) {
+                            InstantApps.showInstallPrompt(ShareActivity.this,
+                                    REQUEST_CODE_INSTALL_APP, "Install Full Version To Get More Fun!");
+                        }
+                    }
 
+                    @Override
+                    public void onCancel() {
+                        Log.e("Facebook", "onCancel: ");
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        Log.e("Facebook", "onError: " + error.toString());
+                    }
+                });
+                if (ShareDialog.canShow(ShareLinkContent.class)) {
+                    ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                            .setContentTitle("MiniVideo")
+                            .setContentDescription("A interesting camera app!")
+                            .setContentUrl(Uri.parse("https://hugo775128583.github.io/main"))
+                            .build();
+                    shareDialog.show(linkContent);
+                }else {
+                    Toast.makeText(ShareActivity.this,"未安装facebook", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -85,5 +128,11 @@ public class ShareActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

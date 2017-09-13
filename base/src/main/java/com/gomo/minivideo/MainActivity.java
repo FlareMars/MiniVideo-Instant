@@ -1,28 +1,21 @@
 package com.gomo.minivideo;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.hardware.Camera;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.gomo.minivideo.camera.CameraFragment;
-import com.gomo.minivideo.camera2.Camera2VideoFragment;
 import com.jb.zcamera.gallery.util.FileUtil;
 import com.jb.zcamera.utils.ZipUtils;
 import com.pixelslab.stickerpe.R;
 
 import java.io.File;
-import java.util.Arrays;
 
 import static com.jb.zcamera.gallery.util.FileUtil.ANIMATION_BG_DIR;
 

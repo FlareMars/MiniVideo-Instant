@@ -20,12 +20,13 @@ android {
 }
 
 dependencies {
-    api 'com.android.support:appcompat-v7:25.3.1'
+    api 'com.facebook.android:facebook-android-sdk:4.10.1'
+    api 'com.android.support:appcompat-v7:26.0.0-beta1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile(name: 'ExifLib-release', ext: 'aar')
     api 'com.google.android.instantapps:instantapps:1.0.0'
     api 'com.googlecode.mp4parser:isoparser:1.1.18'
-    api 'com.android.support:design:25.3.1'
-    api 'com.android.support:recyclerview-v7:25.3.1'
+    api 'com.android.support:design:26.0.0-beta1'
+    api 'com.android.support:recyclerview-v7:26.0.0-beta1'
     application project(':app')
 }
